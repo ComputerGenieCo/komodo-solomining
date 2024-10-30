@@ -1,5 +1,5 @@
 {
-    "coin": "KMD.json",
+    "coin": "NINJA.json",
     "printShares": false,
     "printHighShares": true,
     "printNethash": false,
@@ -33,7 +33,7 @@
     "daemons": [
         {
             "host": "127.0.0.1",
-            "port": 7771,
+            "port": 8427,
             "user": "MyUser",
             "password": "MyPass"
         }
@@ -41,7 +41,7 @@
     "p2p": {
         "enabled": true,
         "host": "127.0.0.1",
-        "port": 7770,
+        "port": 8426,
         "disableTransactions": true
     },
     "blockRefreshInterval": 0,
