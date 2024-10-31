@@ -4,3 +4,7 @@ logs/*
 !logs/backup/.gitkeep 
 !logs/backup
 scripts/blocknotify
+
+*copilot-config.txt
+
+copilot-*-config.txt
