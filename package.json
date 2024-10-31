@@ -50,19 +50,23 @@
   "dependencies": {
     "async": "^3.0.0",
     "base58-native": "^0.1.4",
+    "big-integer": "peterolson/BigInteger.js#3892895",
     "bignum": "mtl1979/node-bignum#dccf7b7",
     "bitgo-utxo-lib": "github:TheComputerGenie/bitgo-utxo-lib.git",
     "express": "^4.19.2",
     "express-dot-engine": "1.0.8",
+    "express-rate-limit": "^7.4.0",
     "merkle-bitcoin": "^1.0.2",
-    "promise": "^8.0.1",
-    "express-rate-limit": "^7.4.0"
+    "promise": "^8.0.1"
   },
+    "overrides": {
+        "bignum": "$bignum"
+    },
   "engines": {
     "node": ">=21.4"
   },
   "scripts": {
-    "preinstall": "npm config set fund false --location=global",
+    "preinstall": "npm config set fund false --location=global&&NODE_ENV=production",
     "postinstall": "npm dedupe && npm update",
     "startinstall": "npm install --save-prod --save-bundle --no-optional --omit=optional && node init.js \"$1\"",
     "start": "node --trace-deprecation init.js \"$1\""
