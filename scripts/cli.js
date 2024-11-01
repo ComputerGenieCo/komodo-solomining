@@ -1,35 +1,39 @@
-var net = require("net");
+const net = require("net");
 
-var defaultPort = 17117;
-var defaultHost = "127.0.0.1";
+const defaultPort = 17117;
+const defaultHost = "127.0.0.1";
 
-var args = process.argv.slice(2);
-var params = [];
-var options = {};
+const args = process.argv.slice(2);
+const params = [];
+const options = {};
 
-for (var i = 0; i < args.length; i += 1) {
-    if (args[i].indexOf("-") === 0 && args[i].indexOf("=") !== -1) {
-        var s = args[i].substr(1).split("=");
-        options[s[0]] = s[1];
+args.forEach(arg => {
+    if (arg.startsWith("-") && arg.includes("=")) {
+        const [key, value] = arg.substring(1).split("=");
+        options[key] = value;
     } else {
-        params.push(args[i]);
+        params.push(arg);
     }
-}
+});
 
-var command = params.shift();
+const command = params.shift();
 
-var client = net
-    .connect(options.port || defaultPort, options.host || defaultHost, () => {
-        client.write(`${JSON.stringify({ command: command, params: params, options: options })}\n`);
-    })
-    .on("error", (error) => {
-        if (error.code === "ECONNREFUSED") {
-            console.log(`Could not connect to any pool at ${defaultHost}:${defaultPort}`);
-        } else {
-            console.log(`Socket error ${JSON.stringify(error)}`);
-        }
-    })
-    .on("data", (data) => {
-        console.log(data.toString());
-    })
-    .on("close", () => {});
+const client = net.connect(options.port || defaultPort, options.host || defaultHost, () => {
+    client.write(`${JSON.stringify({ command, params, options })}\n`);
+});
+
+client.on("error", (error) => {
+    if (error.code === "ECONNREFUSED") {
+        console.error(`Could not connect to any pool at ${defaultHost}:${defaultPort}`);
+    } else {
+        console.error(`Socket error: ${JSON.stringify(error)}`);
+    }
+});
+
+client.on("data", (data) => {
+    console.log(data.toString());
+});
+
+client.on("close", () => {
+    console.log("Connection closed");
+});
