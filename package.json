@@ -48,19 +48,20 @@
     "url": "https://github.com/TheComputerGenie/komodo-solomining.git"
   },
   "dependencies": {
-    "async": "^3.0.0",
+    "async": "^3.2.6",
     "base58-native": "^0.1.4",
     "big-integer": "peterolson/BigInteger.js#3892895",
     "bignum": "mtl1979/node-bignum#dccf7b7",
     "bitgo-utxo-lib": "github:TheComputerGenie/bitgo-utxo-lib.git",
-    "express": "^4.19.2",
-    "express-dot-engine": "1.0.8",
-    "express-rate-limit": "^7.4.0",
+    "express": "^4.21.1",
+    "express-dot-engine": "^1.0.8",
+    "express-rate-limit": "^7.4.1",
     "merkle-bitcoin": "^1.0.2",
-    "promise": "^8.0.1"
+    "promise": "^8.3.0"
   },
     "overrides": {
-        "bignum": "$bignum"
+        "bignum": "$bignum",
+        "async": "$async"
     },
   "engines": {
     "node": ">=21.4"
