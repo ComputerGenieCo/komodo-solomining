@@ -57,19 +57,29 @@
     "express-dot-engine": "^1.0.8",
     "express-rate-limit": "^7.4.1",
     "merkle-bitcoin": "^1.0.2",
+    "module-alias": "^2.2.3",
     "promise": "^8.3.0"
   },
-    "overrides": {
-        "bignum": "$bignum",
-        "async": "$async"
-    },
+  "overrides": {
+    "bignum": "$bignum",
+    "async": "$async"
+  },
   "engines": {
     "node": ">=21.4"
   },
   "scripts": {
     "preinstall": "npm config set fund false --location=global&&NODE_ENV=production",
-    "postinstall": "npm dedupe && npm update",
+    "postinstall": "npm update && npm dedupe",
     "startinstall": "npm install --save-prod --save-bundle --no-optional --omit=optional && node init.js \"$1\"",
     "start": "node --trace-deprecation init.js \"$1\""
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@middlewares": "lib/middlewares",
+    "@pool": "lib/pool",
+    "@workers": "lib/workers",
+    "@blockchain": "lib/pool/blockchain",
+    "@helpers": "lib/pool/helpers",
+    "@protocols": "lib/pool/protocols"
   }
 }
