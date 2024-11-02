@@ -1,14 +1,13 @@
 {
-    "coin": "TOKEL.json",
+    "coin": "NINJA",
     "printShares": false,
     "printHighShares": true,
-    "printNethash": true,
+    "printNethash": false,
     "minDiffAdjust": true,
     "printVarDiffAdjust": false,
-    "pringNewWork": false,
     "printCurrentDiff": true,
     "printSubmissions": true,
-    "jobRebroadcastTimeout": 10,
+    "jobRebroadcastTimeout": 50,
     "connectionTimeout": 6000000,
     "emitInvalidBlockHashes": false,
     "address": "RESWsMfWFvPGGUPGfGgXPgGKWeqVaAtUfy",
@@ -21,10 +20,10 @@
             "diff": 1500
         },
         "5334": {
-            "diff": 30000,
+            "diff": 100000,
             "varDiff": {
-                "minDiff": 3000,
-                "maxDiff": 10000000,
+                "minDiff": 30000,
+                "maxDiff": 1000000,
                 "targetTime": 5,
                 "retargetTime": 300,
                 "variancePercent": 30
@@ -34,7 +33,7 @@
     "daemons": [
         {
             "host": "127.0.0.1",
-            "port": 29405,
+            "port": 8427,
             "user": "MyUser",
             "password": "MyPass"
         }
@@ -42,10 +41,10 @@
     "p2p": {
         "enabled": true,
         "host": "127.0.0.1",
-        "port": 29404,
+        "port": 8426,
         "disableTransactions": true
     },
-    "blockRefreshInterval": 0,
+    "blockRefreshInterval": 10000,
     "website": {
         "enabled": true,
         "host": "0.0.0.0",

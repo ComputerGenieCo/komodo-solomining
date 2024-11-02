@@ -1,11 +1,11 @@
 {
-    "coin": "KMD.json",
+    "coin": "PIRATE",
     "printShares": false,
     "printHighShares": true,
     "printNethash": false,
     "minDiffAdjust": true,
     "printVarDiffAdjust": false,
-    "printCurrentDiff": false,
+    "printCurrentDiff": true,
     "printSubmissions": true,
     "jobRebroadcastTimeout": 50,
     "connectionTimeout": 6000000,
@@ -33,7 +33,7 @@
     "daemons": [
         {
             "host": "127.0.0.1",
-            "port": 7771,
+            "port": 45453,
             "user": "MyUser",
             "password": "MyPass"
         }
@@ -41,7 +41,7 @@
     "p2p": {
         "enabled": true,
         "host": "127.0.0.1",
-        "port": 7770,
+        "port": 45452,
         "disableTransactions": true
     },
     "blockRefreshInterval": 0,

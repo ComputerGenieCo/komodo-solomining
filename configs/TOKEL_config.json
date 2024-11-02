@@ -1,11 +1,11 @@
 {
-    "coin": "NINJA.json",
+    "coin": "TOKEL",
     "printShares": false,
     "printHighShares": true,
     "printNethash": false,
     "minDiffAdjust": true,
     "printVarDiffAdjust": false,
-    "printCurrentDiff": false,
+    "printCurrentDiff": true,
     "printSubmissions": true,
     "jobRebroadcastTimeout": 50,
     "connectionTimeout": 6000000,
@@ -33,7 +33,7 @@
     "daemons": [
         {
             "host": "127.0.0.1",
-            "port": 8427,
+            "port": 29405,
             "user": "MyUser",
             "password": "MyPass"
         }
@@ -41,7 +41,7 @@
     "p2p": {
         "enabled": true,
         "host": "127.0.0.1",
-        "port": 8426,
+        "port": 29404,
         "disableTransactions": true
     },
     "blockRefreshInterval": 0,

@@ -9,8 +9,8 @@ const logging = require('@middlewares/logging.js');
 const PoolWorker = require('@workers/poolWorker.js');
 const CliListener = require('@workers/cliListener.js');
 
-const CONFIG_FILE_DEFAULT = './config.json';
-const COIN_DIR = 'coins';
+const CONFIG_FILE_DEFAULT = './configs/config.json';
+const CONSTANTS_DIR = 'configs/constants';
 const LOG_DIR = './logs';
 const LOG_FILE_SUFFIX = '_blocks.json';
 const SPAWN_INTERVAL_MS = 250;
@@ -23,7 +23,7 @@ const RESTART_DELAY_MS = 2000;
  * @return {Object} The configuration object.
  */
 function loadConfig() {
-    const configFile = process.argv[3] ? `./${process.argv[3]}_config.json` : CONFIG_FILE_DEFAULT;
+    const configFile = process.argv[3] ? `./configs/${process.argv[3]}_config.json` : CONFIG_FILE_DEFAULT;
     try {
         return require(configFile);
     } catch (error) {
@@ -33,12 +33,12 @@ function loadConfig() {
 }
 
 /**
- * Loads the coin-specific configuration file.
+ * Loads the coin-specific constants file.
  * @param {Object} config - The main configuration object.
  * @return {Object} The coin configuration object.
  */
 function loadCoinConfig(config) {
-    const coinFilePath = path.join(COIN_DIR, config.coin);
+    const coinFilePath = path.join(CONSTANTS_DIR, `${config.coin}_constants.json`);
     if (!fs.existsSync(coinFilePath)) {
         console.error(`Could not find coin file: ${coinFilePath}`);
         process.exit(1);
