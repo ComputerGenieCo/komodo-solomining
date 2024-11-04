@@ -56,9 +56,7 @@
     "express": "^4.21.1",
     "express-dot-engine": "^1.0.8",
     "express-rate-limit": "^7.4.1",
-    "merkle-bitcoin": "^1.0.2",
-    "module-alias": "^2.2.3",
-    "promise": "^8.3.0"
+    "module-alias": "^2.2.3"
   },
   "overrides": {
     "bignum": "$bignum",
