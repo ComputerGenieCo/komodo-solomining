@@ -66,23 +66,19 @@ function initializeConfig() {
 const config = initializeConfig();
 
 /**
- * Checks if the current process is a cluster worker and initializes the appropriate worker type.
- * If the process is a cluster worker, it initializes either a PoolWorker or a Website worker based on the environment variable `workerType`.
- * If the worker type is unknown, it logs an error and exits the process.
+ * Creates empty log files if they do not exist.
  */
-if (cluster.isWorker) {
-    switch (process.env.workerType) {
-        case 'pool':
-            new PoolWorker();
-            break;
-        case 'website':
-            new Website();
-            break;
-        default:
-            console.error(`Unknown worker type: ${process.env.workerType}`);
-            process.exit(1);
-    }
-    return;
+function createEmptyLogs() {
+    const logFilePath = path.join(LOG_DIR, `${config.coin.symbol}${LOG_FILE_SUFFIX}`);
+    fs.readFile(logFilePath, (err, data) => {
+        if (err && err.code === "ENOENT") {
+            fs.writeFile(logFilePath, '[]', (err) => {
+                if (err) throw err;
+            });
+        } else if (err) {
+            throw err;
+        }
+    });
 }
 
 /**
@@ -200,19 +196,23 @@ function startListeners() {
 }
 
 /**
- * Creates empty log files if they do not exist.
+ * Checks if the current process is a cluster worker and initializes the appropriate worker type.
+ * If the process is a cluster worker, it initializes either a PoolWorker or a Website worker based on the environment variable `workerType`.
+ * If the worker type is unknown, it logs an error and exits the process.
  */
-function createEmptyLogs() {
-    const logFilePath = path.join(LOG_DIR, `${config.coin.symbol}${LOG_FILE_SUFFIX}`);
-    fs.readFile(logFilePath, (err, data) => {
-        if (err && err.code === "ENOENT") {
-            fs.writeFile(logFilePath, '[]', (err) => {
-                if (err) throw err;
-            });
-        } else if (err) {
-            throw err;
-        }
-    });
+if (cluster.isWorker) {
+    switch (process.env.workerType) {
+        case 'pool':
+            new PoolWorker();
+            break;
+        case 'website':
+            new Website();
+            break;
+        default:
+            console.error(`Unknown worker type: ${process.env.workerType}`);
+            process.exit(1);
+    }
+    return;
 }
 
 /**
