@@ -14,19 +14,43 @@
     "pubkey": "02592809a25cd27cca40ea6ccb04a40a79b3108d3991761412f12db9773f336078",
     "ports": {
         "5332": {
-            "diff": 300
-        },
-        "5333": {
-            "diff": 1500
-        },
-        "5334": {
-            "diff": 100000,
+            "diff": 1,
             "varDiff": {
-                "minDiff": 30000,
+                "minDiff": 1,
                 "maxDiff": 1000000,
                 "targetTime": 5,
-                "retargetTime": 300,
-                "variancePercent": 30
+                "retargetTime": 90,
+                "variancePercent": 10
+            }
+        },
+        "5333": {
+            "diff": 10,
+            "varDiff": {
+                "minDiff": 1,
+                "maxDiff": 1000000,
+                "targetTime": 5,
+                "retargetTime": 90,
+                "variancePercent": 10
+            }
+        },
+        "5334": {
+            "diff": 140,
+            "varDiff": {
+                "minDiff": 1,
+                "maxDiff": 1000000,
+                "targetTime": 5,
+                "retargetTime": 90,
+                "variancePercent": 10
+            }
+        },
+        "5335": {
+            "diff": 840,
+            "varDiff": {
+                "minDiff": 1,
+                "maxDiff": 1000000,
+                "targetTime": 5,
+                "retargetTime": 90,
+                "variancePercent": 10
             }
         }
     },
