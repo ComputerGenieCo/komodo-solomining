@@ -1,6 +1,6 @@
 {
   "name": "komodo-solomining",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "commonjs",
   "description": "High performance Stratum poolserver in Node.js",
   "keywords": [
@@ -12,9 +12,9 @@
     "kmd",
     "poolserver"
   ],
-  "homepage": "https://github.com/TheComputerGenie/komodo-solomining",
+  "homepage": "https://github.com/ComputerGenieCo/komodo-solomining",
   "bugs": {
-    "url": "https://github.com/TheComputerGenie/komodo-solomining/issues"
+    "url": "https://github.com/ComputerGenieCo/komodo-solomining/issues"
   },
   "license": "GPL-3.0",
   "author": "ComputerGenie",
@@ -45,7 +45,7 @@
   "main": "init.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TheComputerGenie/komodo-solomining.git"
+    "url": "https://github.com/ComputerGenieCo/komodo-solomining.git"
   },
   "dependencies": {
     "async": "^3.2.6",

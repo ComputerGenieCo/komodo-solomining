@@ -1,5 +1,5 @@
 ## Solomining for Komodo ecosystem.
-## (NOT READY FOR TESTING!!!!!!!!!!!!!!)
+## READY FOR TESTING!!!!!!!!!!!!!!
 ![](./Screenshot.png)
 ## The solo miner's solo pool
 The objective is a "light-weight" pool that does what needs to be done.  
@@ -31,7 +31,7 @@ sudo apt-get install nodejs -y
 
 sudo npm install npm -g
 
-git clone https://github.com/TheComputerGenie/komodo-solomining
+git clone https://github.com/ComputerGenieCo/komodo-solomining
 cd komodo-solomining
 npm install
 ```
@@ -40,12 +40,13 @@ Configure
 -------------
 Go to config.json and change it to your setup.
 
-Recomended diffs:
+Recomended diffs (1 diff per 1k Sol/s per device):
 -------------
-GPU: 300  
-Minis: 3000  
-Large ASICs: 30000  
-Rentals: 1350000
+GPU: 1  
+Minis: 10  
+Small ASICs (z9): 40  
+Large ASICs (A9++ - Z15): 140-840  
+Rentals: 1000 per 1M Sol/s
 
 Run
 ------------
@@ -72,19 +73,14 @@ Differences between this and Z-NOMP
 * This is meant for solo mining.
 * There is no share-based pay system.
 * No payments (coins go directly to the address in config).
-* NO equihashverify - While this pool will work with rentals (NiceHash checked at the time of publishing), it is intended
+* No equihashverify - While this pool will work with rentals (NiceHash checked at the time of publishing), it is intended
 for the true solo miner, who needs no such protection against fake shares.
 
 Notes and known issues:
 ------------
 * (N) VarDiff only waits 1/2 of `retargetTime` when miners first enter the pool in order to establish an initial stats set.
 
-* (N) If the code looks like it has 9 styles of writing, that because it does. It was a long journey from NOMP to here with
-many hands in the jar and no "standard" of style. Over time, the base has become the spaghetti that NOMP was written to
-avoid, and over time that will be changed.
-
-* (N KI) Web pages use online resources for css and some of the js. These min files are "standard", used on countless sites,
-can be checked at your discretion, and may or may not be localized at some future point.
+* (N KI) Currently the stratum only covers basic chains: no founders, no special cases (like MCL).
 
 * (N) There is no TLS or miner banning functionality, because I'm not sure I could ever be convinced of need for a solo setup.
 
