@@ -38,7 +38,7 @@ npm install
 
 Configure
 -------------
-Go to config.json and change it to your setup.
+Go to configs/config.json and change it to your default setup (or other coins).
 
 Recomended diffs (1 diff per 1k Sol/s per device):
 -------------
@@ -50,8 +50,13 @@ Rentals: 1000 per 1M Sol/s
 
 Run
 ------------
+your base coin (config default is KMD)
 ```bash
 npm start
+```
+or a selected coin (example: NINJA)
+```bash
+npm start NINJA
 ```
 
 Update (normally)
