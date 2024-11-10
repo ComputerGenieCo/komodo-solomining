@@ -62,7 +62,7 @@
                         <tbody>
                             <tr>
                                 <td>[[= model.blocks]]</td>
-                                <td>[[= model.hashrate]] Sol/s</td>
+                                <td>[[= model.hashrate]]</td>
                                 <td>[[= model.difficulty]]</td>
                             </tr>
                         </tbody>
