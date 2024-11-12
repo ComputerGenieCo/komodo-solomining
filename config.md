@@ -24,7 +24,7 @@
 |<p><ul><ul><ul>maxDiff</ul>|1000000|the **highest** diff you want varDiff to assign|
 |<p><ul><ul><ul>targetTime</ul>|20|Try to get 1 share per this many seconds|
 |<p><ul><ul><ul>retargetTime</ul>|300|Check to see if we should retarget every this many seconds|
-|<p><ul><ul><ul>variancePercent</ul>|30|Allow time to very this % from target without retargeting|
+|<p><ul><ul><ul>variancePercent</ul>|30|Allow time to vary this % from target without retargeting|
 |daemons:|||
 |<ul>host|127.0.0.1|the IP address of your daemon|
 |<ul>port|7771|the `rpcport` your daemon uses for RPC|
