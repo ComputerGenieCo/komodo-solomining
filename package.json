@@ -56,17 +56,7 @@
     "bitgo-utxo-lib": "github:TheComputerGenie/bitgo-utxo-lib.git",
     "express": "^4.21.1",
     "express-dot-engine": "^1.0.8",
-    "express-rate-limit": "^7.4.1",
-    "module-alias": "^2.2.3"
-  },
-  "_moduleAliases": {
-    "@blockchain": "lib/pool/blockchain",
-    "@helpers": "lib/pool/helpers",
-    "@middlewares": "lib/middlewares",
-    "@pool": "lib/pool",
-    "@protocols": "lib/pool/protocols",
-    "@root": ".",
-    "@workers": "lib/workers"
+    "express-rate-limit": "^7.4.1"
   },
   "scripts": {
     "postinstall": "npm update && npm dedupe",

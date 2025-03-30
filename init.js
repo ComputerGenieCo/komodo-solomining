@@ -1,13 +1,12 @@
-require('module-alias/register')
 const fs = require('fs');
 const os = require('os');
 const cluster = require('cluster');
 const path = require('path');
 
-const Website = require('@workers/websiteListener.js');
-const logging = require('@middlewares/logging.js');
-const PoolWorker = require('@workers/poolWorker.js');
-const CliListener = require('@workers/cliListener.js');
+const Website = require('./lib/workers/websiteListener.js');
+const logging = require('./lib/middlewares/logging.js');
+const PoolWorker = require('./lib/workers/poolWorker.js');
+const CliListener = require('./lib/workers/cliListener.js');
 
 const CONFIG_FILE_DEFAULT = './configs/config.json';
 const CONSTANTS_DIR = 'configs/constants';
