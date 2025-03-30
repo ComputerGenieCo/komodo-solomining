@@ -1,0 +1,43 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.network-info {
+    padding: 15px;
+}
+
+.network-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.stat-label {
+    font-weight: 500;
+}
+
+.stat-value {
+    font-family: inherit;
+}
+
+.table {
+    font-size: 1rem;
+}
+
+.table th {
+    font-weight: 500;
+}
+
+h5.card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}

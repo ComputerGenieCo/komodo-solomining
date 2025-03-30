@@ -1,0 +1,72 @@
+[data-bs-theme=dark] {
+    --bs-body-color: #dee2e6;
+    --bs-body-bg: #212529;
+    --bs-card-bg: #2c3034;
+    --bs-secondary-color: #888;
+    --chart-bg: #2b2b2b;
+    --chart-text: #e0e0e0;
+    --chart-stroke: #ffffff;
+}
+
+[data-bs-theme=dark] .navbar {
+    background-color: #1a1a1a !important;
+}
+
+[data-bs-theme=dark] .table {
+    --bs-table-color: #dee2e6;
+    --bs-table-bg: #2c3034;
+    --bs-table-border-color: #373b3e;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-hover-bg: #373b3e;
+}
+
+[data-bs-theme=dark] .card {
+    --bs-card-border-color: #373b3e;
+}
+
+[data-bs-theme=dark] .navbar-brand {
+    color: #cccccc;
+}
+
+[data-bs-theme=dark] .navbar-brand:hover {
+    color: #ffffff;
+}
+
+.theme-icon-active,
+.theme-icon-inactive {
+    font-size: 1.2rem;
+    color: #cccccc;
+}
+
+[data-bs-theme=dark] .theme-icon-active {
+    display: none;
+}
+
+[data-bs-theme=dark] .theme-icon-inactive {
+    display: inline-block;
+    color: #666666;
+}
+
+[data-bs-theme=light] .theme-icon-active {
+    display: inline-block;
+    color: #ffffff;
+}
+
+[data-bs-theme=light] .theme-icon-inactive {
+    display: none;
+}
+
+[data-bs-theme=light] {
+    --chart-bg: #ffffff;
+    --chart-text: #333333;
+    --chart-stroke: #000000;
+}
+
+/* Footer dark mode styles */
+[data-bs-theme=dark] .theme-footer {
+    background-color: #1a1a1a !important;
+}
+
+[data-bs-theme=dark] .theme-footer .text-muted {
+    color: #adb5bd !important;
+}

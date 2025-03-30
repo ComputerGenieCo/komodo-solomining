@@ -3,14 +3,14 @@ async function httpRequest(req) {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
         request.open('GET', req);
-        request.onload = function() {
+        request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 resolve(request.responseText);
             } else {
                 reject(request.status);
             }
         };
-        request.onerror = function() { reject("Couldn't get the data :("); };
+        request.onerror = function () { reject("Couldn't get the data :("); };
         request.send();
     });
 }
@@ -22,12 +22,8 @@ function groupBy(xs, key) {
     }, {});
 }
 
-function done(func) {
-    //console.log(func + " is done");
-}
-
-// Main function to handle blocks
-async function fetchBlocks(cback) {
+// Main function to handle blocks  
+async function fetchBlocks() {
     try {
         const json = await httpRequest("/blocks.json");
         const array = JSON.parse(json); // Sample: [{"block":48759,"finder":"rx480","date":1490404074912},{"block":48760,"finder":"rx470","date":1490404148117}]
@@ -39,9 +35,10 @@ async function fetchBlocks(cback) {
             renderBlocksChart(groupedByFinder)
         ]);
 
-        cback("fetchBlocks() completed");
+        return "fetchBlocks() completed";
     } catch (err) {
         console.error("Error fetching blocks:", err);
+        throw err;
     }
 }
 
@@ -128,68 +125,81 @@ async function renderBlocksTable(array) {
 
 // Function to create blocks chart
 async function renderBlocksChart(data) {
-    const array = [];
-    const svgwidth = 1000;
-    const width = 360;
-    const height = 360;
-    const radius = Math.min(width, height) / 2;
-    const color = d3.scaleOrdinal(d3.schemeCategory20c);
+    const container = document.getElementById('info');
+    const containerWidth = container.offsetWidth;
+    const pieHeight = 280; // Height of actual pie
+    const svgHeight = 340; // Increased overall height for padding
+    const pieWidth = pieHeight;
+    const width = containerWidth;
+    const radius = Math.min(pieWidth, pieHeight) / 2;
 
-    Object.keys(data).forEach(i => {
-        const obj = {};
-        obj.label = i;
-        obj.value = data[i].length;
-        array.push(obj);
-    });
+    // Calculate legend width based on data
+    const maxLabelLength = Math.max(...Object.keys(data).map(k => (k + ' (' + data[k].length + ')').length));
+    const legendWidth = maxLabelLength * 8 + 40; // Approximate pixels per character plus padding
+    const totalChartWidth = pieWidth + legendWidth;
 
-    const legendRectSize = 18;
-    const legendSpacing = 5;
+    // Calculate centering offset
+    const centerOffset = (width - totalChartWidth) / 2;
 
-    const svg = d3.select('#piechart')
-                .append('svg')
-                .attr('width', svgwidth)
-                .attr('height', height)
-                .append('g')
-                .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
+    d3.select("#piechart").selectAll("*").remove();
+    const svg = d3.select("#piechart")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", svgHeight) // Use larger height for SVG
+        .append("g")
+        .attr("transform", `translate(${centerOffset + pieWidth / 2},${svgHeight / 2})`); // Center in larger space
 
-    const arc = d3.arc()
-                .innerRadius(0)
-                .outerRadius(radius);
+    const color = d3.scaleOrdinal()
+        .domain(Object.keys(data))
+        .range(d3.schemeSet3);
 
-    const pie = d3.pie().value(d => d.value).sort(null);
+    const pie = d3.pie()
+        .value(d => d[1].length);
 
-    const path = svg.selectAll('path')
-                .data(pie(array))
-                .enter()
-                .append('path')
-                .attr('d', arc)
-                .attr('fill', (d, i) => color(d.data.label));
+    const data_ready = pie(Object.entries(data));
 
-    const legend = svg.selectAll('.legend')
-                    .data(color.domain())
-                    .enter()
-                    .append('g')
-                    .attr('class', 'legend')
-                    .attr('transform', (d, i) => {
-                        const height = legendRectSize + legendSpacing;
-                        const offset = height * color.domain().length / 2;
-                        const horz = 12 * legendRectSize;
-                        const vert = i * height;
-                        return 'translate(' + horz + ',' + vert + ')';
-                    });
+    // Create pie slices
+    svg.selectAll('path')
+        .data(data_ready)
+        .join('path')
+        .attr('d', d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+        )
+        .attr('fill', d => color(d.data[0]))
+        .attr("stroke", "var(--chart-stroke)")
+        .style("stroke-width", "2px");
 
-    legend.append('rect')
-        .attr('width', legendRectSize)
-        .attr('height', legendRectSize)
-        .style('fill', color)
-        .style('stroke', color);
+    // Create legend with centered position
+    const legend = svg.append("g")
+        .attr("transform", `translate(${radius + 20}, ${-Object.keys(data).length * 12})`);
 
-    legend.append('text')
-        .attr('x', legendRectSize + legendSpacing)
-        .attr('y', legendRectSize - legendSpacing)
-        .text((d, i) => array[i].label);
+    legend.selectAll("legend")
+        .data(data_ready)
+        .join("g")
+        .attr("transform", (d, i) => `translate(0, ${i * 25})`)
+        .call(g => {
+            g.append("rect")
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", d => color(d.data[0]));
+
+            g.append("text")
+                .attr("x", 25)
+                .attr("y", 12)
+                .text(d => `${d.data[0]} (${d.data[1].length})`)
+                .style("font-size", "1rem")
+                .style("font-family", "inherit")
+                .style("fill", "var(--chart-text)");
+        });
 }
 
-// Main script execution
+// Main script execution 
 const args = document.currentScript.dataset.args.split(',');
-document.addEventListener("DOMContentLoaded", () => { fetchBlocks(done); });
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        await fetchBlocks();
+    } catch (err) {
+        console.error(err);
+    }
+});

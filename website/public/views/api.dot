@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[= model.coin.name ]] Mining API</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">[[= model.coin.name ]] Mining</a>
+            <div class="navbar-nav ms-auto">
+                <div class="nav-item d-flex align-items-center">
+                    <div class="form-check form-switch d-flex align-items-center">
+                        <input class="form-check-input me-2" type="checkbox" id="themeToggle" onclick="toggleTheme()">
+                        <label class="form-check-label" for="themeToggle">
+                            <i class="bi bi-moon-stars-fill theme-icon-active"></i>
+                            <i class="bi bi-sun-fill theme-icon-inactive"></i>
+                        </label>
+                    </div>
+                </div>
+                <a class="nav-link active" href="/api">API</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">API Documentation</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Available Endpoints</h6>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Endpoint</th>
+                                        <th>Description</th>
+                                        <th>Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>/blocks.json</code></td>
+                                        <td>Returns list of found blocks</td>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light theme-footer">
+        <div class="container text-center">
+            <span class="text-muted">[[= model.coin.name ]] Solo Mining Pool</span>
+        </div>
+    </footer>
+
+    <!-- Core Dependencies -->
+    <script src="/scripts/jquery-3.6.0.min.js"></script>
+    <script src="/scripts/bootstrap.bundle.min.js"></script>
+    <!-- Application Scripts -->
+    <script src="/scripts/theme.js"></script>
+</body>
+</html>
