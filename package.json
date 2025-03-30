@@ -1,8 +1,20 @@
 {
   "name": "komodo-solomining",
   "version": "1.0.0",
+  "author": "ComputerGenie",
   "type": "commonjs",
   "description": "High performance Stratum poolserver in Node.js",
+  "engines": {
+    "node": ">=21.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ComputerGenieCo/komodo-solomining.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ComputerGenieCo/komodo-solomining/issues"
+  },
+  "homepage": "https://github.com/ComputerGenieCo/komodo-solomining",
   "keywords": [
     "stratum",
     "mining",
@@ -12,17 +24,9 @@
     "kmd",
     "poolserver"
   ],
-  "homepage": "https://github.com/ComputerGenieCo/komodo-solomining",
-  "bugs": {
-    "url": "https://github.com/ComputerGenieCo/komodo-solomining/issues"
-  },
   "license": "GPL-3.0",
-  "author": "ComputerGenie",
+  "main": "init.js",
   "contributors": [
-    {
-      "name": "webworker01",
-      "url": "https://github.com/webworker01"
-    },
     {
       "name": "aayanl",
       "url": "https://github.com/aayanl/equihash-solomining"
@@ -32,25 +36,22 @@
       "url": "https://github.com/hellcatz"
     },
     {
-      "name": "z-classic developers",
-      "url": "https://github.com/z-classic"
-    },
-    "vekexasia",
-    "TheSeven",
-    {
       "name": "Matthew Little",
       "url": "https://github.com/zone117x"
+    },
+    "TheSeven",
+    "vekexasia",
+    {
+      "name": "webworker01",
+      "url": "https://github.com/webworker01"
+    },
+    {
+      "name": "z-classic developers",
+      "url": "https://github.com/z-classic"
     }
   ],
-  "main": "init.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ComputerGenieCo/komodo-solomining.git"
-  },
   "dependencies": {
-    "async": "^3.2.6",
     "base58-native": "^0.1.4",
-    "big-integer": "peterolson/BigInteger.js#3892895",
     "bignum": "mtl1979/node-bignum#dccf7b7",
     "bitgo-utxo-lib": "github:TheComputerGenie/bitgo-utxo-lib.git",
     "express": "^4.21.1",
@@ -58,26 +59,19 @@
     "express-rate-limit": "^7.4.1",
     "module-alias": "^2.2.3"
   },
-  "overrides": {
-    "bignum": "$bignum",
-    "async": "$async"
-  },
-  "engines": {
-    "node": ">=21.4"
-  },
-  "scripts": {
-    "preinstall": "npm config set fund false --location=global&&NODE_ENV=production",
-    "postinstall": "npm update && npm dedupe",
-    "startinstall": "npm install --save-prod --save-bundle --no-optional --omit=optional && node init.js \"$1\"",
-    "start": "node --trace-deprecation init.js \"$1\""
-  },
   "_moduleAliases": {
-    "@root": ".",
-    "@middlewares": "lib/middlewares",
-    "@pool": "lib/pool",
-    "@workers": "lib/workers",
     "@blockchain": "lib/pool/blockchain",
     "@helpers": "lib/pool/helpers",
-    "@protocols": "lib/pool/protocols"
+    "@middlewares": "lib/middlewares",
+    "@pool": "lib/pool",
+    "@protocols": "lib/pool/protocols",
+    "@root": ".",
+    "@workers": "lib/workers"
+  },
+  "scripts": {
+    "postinstall": "npm update && npm dedupe",
+    "preinstall": "npm config set fund false --location=global&&NODE_ENV=production",
+    "start": "node --trace-deprecation init.js \"$1\"",
+    "startinstall": "npm install --save-prod --save-bundle --no-optional --omit=optional && node init.js \"$1\""
   }
 }
