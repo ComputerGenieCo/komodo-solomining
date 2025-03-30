@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[[= model.coin.name ]] Block Explorer</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/theme.css">
 </head>
@@ -80,7 +80,7 @@
     <!-- Core Dependencies -->
     <script src="/scripts/jquery-3.6.0.min.js"></script>
     <script src="/scripts/bootstrap.bundle.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/scripts/d3.v7.min.js"></script>
     
     <!-- Application Scripts -->
     <script src="/scripts/theme.js"></script>
